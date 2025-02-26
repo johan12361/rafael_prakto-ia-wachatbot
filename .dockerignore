@@ -1,0 +1,5 @@
+.vscode
+bot_sessions
+node_modules
+*.log
+.gitignore

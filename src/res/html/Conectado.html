@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatBot Conectado</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        text-align: center;
+        padding-top: 50px;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #4a90e2;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 20px;
+      }
+      h3 {
+        font-size: 1.2rem;
+        color: #3ad656;
+        margin-bottom: 30px;
+      }
+
+      img {
+        cursor: pointer;
+        width: 350px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      #mensaje {
+        font-size: 1rem;
+        color: #888;
+        margin-top: 20px;
+        visibility: visible;
+        transition: visibility 0.5s ease, opacity 0.5s ease;
+        opacity: 1;
+      }
+
+      #creditos {
+        font-size: 1rem;
+        color: #000000;
+        margin-top: 20px;
+        visibility: visible;
+        opacity: 5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ChatBot Conectado</h1>
+    <h2>Conectado al numero de telefono</h2>
+    <h3>+##TELEFONO##</h3>
+    <img id="imagen" src="./icono.png" alt="Bot Conectado" />
+    <p id="mensaje">
+      Si deseas conectar el chatbot a otro número, cierra primero la sesión del teléfono +##TELEFONO##
+    </p>
+    <p id="creditos">Desarrollado por Johan S</p>
+  </body>
+</html>

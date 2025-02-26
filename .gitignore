@@ -1,0 +1,5 @@
+.env
+*_sessions
+node_modules
+*.log
+temp

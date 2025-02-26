@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vincular QR</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        text-align: center;
+        padding-top: 50px;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #4a90e2;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      img {
+        cursor: pointer;
+        width: 350px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        filter: blur(10px); /* Imagen borrosa */
+        transition: all 0.5s ease;
+      }
+
+      img.clear {
+        filter: none; /* Elimina el desenfoque */
+        transform: scale(1.05); /* Efecto de zoom */
+      }
+
+      #mensaje {
+        font-size: 1rem;
+        color: #888;
+        margin-top: 20px;
+        visibility: visible;
+        transition: visibility 0.5s ease, opacity 0.5s ease;
+        opacity: 1;
+      }
+      #creditos {
+        font-size: 1rem;
+        color: #000000;
+        margin-top: 20px;
+        visibility: visible;
+        opacity: 5;
+      }
+
+      #mensaje.oculto {
+        visibility: hidden;
+        opacity: 0; /* Añade transición de opacidad para ocultar suavemente */
+      }
+    </style>
+    <script>
+      const duracion = 20
+
+      // Ruta de la imagen que cambia cada 20 segundos
+      const rutaImagen = '../../../bot.qr.png'
+
+      // Función para cambiar la imagen agregando un parámetro único para evitar el caché
+      function cambiarImagen() {
+        const imgElement = document.getElementById('imagen')
+        const timestamp = new Date().getTime() // Añade marca de tiempo para evitar caché
+        imgElement.src = `${rutaImagen}?v=${timestamp}`
+        imgElement.classList.remove('clear') // Aplica de nuevo el desenfoque
+        document.getElementById('mensaje').classList.remove('oculto') // Muestra el mensaje nuevamente
+      }
+
+      // Elimina el desenfoque cuando el usuario hace clic en la imagen
+      function regenerarImagen() {
+        const imgElement = document.getElementById('imagen')
+        imgElement.classList.add('clear') // Elimina el desenfoque
+        document.getElementById('mensaje').classList.add('oculto') // Oculta el mensaje
+      }
+
+      // Inicia la imagen y la configuración al cargar la página
+      window.onload = function () {
+        cambiarImagen() // Cambia la imagen al inicio
+        setInterval(cambiarImagen, duracion * 1000) // Cambia la imagen cada 20 segundos
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Conectar QR</h1>
+    <h2>Escanea con tu teléfono el QR desde la app de WhatsApp</h2>
+    <img id="imagen" alt="Imagen Actualizable" onclick="regenerarImagen()" />
+    <p id="mensaje">Haz clic en la imagen para refrescarla</p>
+    <p id="creditos">Desarrollado por Johan S</p>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+
+{
+  "editor.fontLigatures": true,
+  //SS formato
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.bracketSameLine": false,
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "prettier.bracketSpacing": true,
+  "prettier.tabWidth": 2,
+  "prettier.printWidth": 110,
+  "prettier.trailingComma": "none"
+}
