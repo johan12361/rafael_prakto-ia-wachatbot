@@ -10,12 +10,12 @@ import {
   ActualizarContactos,
   ActualizarNotificaciones,
   ActualizarMensajes,
-  ActualizarComunicados
+  ActualizarHorario,
+  ActualizarConfigCitas
 } from '../config/bot.mjs'
 
 //XX ADICIONALES
 import { EnviarMensaje } from '../funciones/proveedor.mjs'
-import { EnviarComunicado } from '../config/enviarComunicado.mjs'
 import { AgregarMensajeHistorial } from './OpenAi/historial.mjs'
 
 //TT REST
@@ -50,13 +50,15 @@ export function APIREST(PROV) {
           console.log('actualizar mensajes')
           ActualizarMensajes()
         }
-
-        //XX ADICIONALES
-
-        //SS 5 actualizar comunicados
-        else if (id === 'comunicados') {
-          console.log('actualizar comunicados')
-          await ActualizarComunicados()
+        //SS 5 actualizar horario
+        else if (id === 'horario') {
+          console.log('actualizar horario')
+          ActualizarHorario()
+        }
+        //SS 6 actualizar configuracion de citas
+        else if (id === 'con_citas') {
+          console.log('actualizar configuracion de citas')
+          ActualizarConfigCitas()
         }
         return res.end('la peticion de actualizacion se realizó con éxito.')
       } catch (error) {
@@ -97,15 +99,6 @@ export function APIREST(PROV) {
             const json = JSON.stringify({ estado: 'ERROR' })
             return res.end(json)
           }
-        }
-        //SS 2 enviar comunicado
-        else if (id === 'enviar_comunicado') {
-          console.log('accion crear enviar comunicado')
-          console.log(req.body)
-          const estado = await EnviarComunicado(req.body.id)
-          res.setHeader('Content-Type', 'application/json')
-          const json = JSON.stringify(estado)
-          return res.end(json)
         }
       } catch (error) {
         console.error('Error durante la accion:', error)

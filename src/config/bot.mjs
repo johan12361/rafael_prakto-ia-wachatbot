@@ -1,7 +1,6 @@
 import 'dotenv/config'
 import { AppSheetUser, getTable } from 'appsheet-connect'
 import { getIdDocFromUrl, getTxtDoc } from 'googledocs-downloader'
-import { EnviarComunicado, ActualizarComunicado } from './enviarComunicado.mjs'
 
 //TT APSHEET CREDENCIALES
 const appsheetId = process.env.APPSHEET_ID
@@ -106,17 +105,6 @@ export const HORARIO = {
   DIAS: []
 }
 
-//FF COMUNICADOS
-export const COMUNICADOS = {
-  LISTA_COMUNICADOS: []
-}
-
-//FF CATALOGO
-export const CATALOGO = {
-  lISTA_CATALOGO: [],
-  ARCHIVO: []
-}
-
 //TT INICAR BOT
 export async function Inicializar() {
   console.log('🔄 INICIALIZANDO DATOS DE BOT 🔜')
@@ -125,7 +113,6 @@ export async function Inicializar() {
     ActualizarMensajes(),
     ActualizarContactos(),
     ActualizarNotificaciones(),
-    ActualizarComunicados(),
     ActualizarConfigCitas(),
     ActualizarHorario()
   ])
@@ -234,25 +221,6 @@ export async function ActualizarNotificaciones() {
     return console.log('✅ INFORMACION DE NOTIFICACIONES CARGADA')
   }
   return console.error('❌ NO SE LOGRO CARGAR INFORMACION DE NOTIFICACIONES')
-}
-
-//SS ACTUALIZAR COMUNICADOS
-export async function ActualizarComunicados() {
-  const data = await getTable(APPSHEETCONFIG, CONFIG_ENV.COMUNICADOS)
-  if (data !== null) {
-    COMUNICADOS.LISTA_COMUNICADOS = data
-    for (const comunicado of COMUNICADOS.LISTA_COMUNICADOS) {
-      if (comunicado.PROCESO === 'ENVIANDO') {
-        EnviarComunicado(comunicado.ID).then((res) => {
-          console.log(res)
-          ActualizarComunicado(comunicado.ID, res.res, 'ENVIANDO')
-        })
-      }
-    }
-    //console.log(COMUNICADOS.LISTA_COMUNICADOS)
-    return console.log('✅ INFORMACION DE COMUNICADOS CARGADA')
-  }
-  return console.error('❌ NO SE LOGRO CARGAR INFORMACION DE COMUNICADOS')
 }
 
 //SS ACTUALIZAR CONFIGURACION DE CITAS
