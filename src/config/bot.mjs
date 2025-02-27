@@ -8,7 +8,7 @@ const appsheetKey = process.env.APPSHEET_KEY
 export const APPSHEETCONFIG = new AppSheetUser(appsheetId, appsheetKey)
 
 export const CONFIG_ENV = {
-  BOT: 'BOT',
+  BOT_NAME: 'BOT_1',
   MENSAJES: 'MENSAJES',
   CONTACTOS: 'CONTACTOS',
   NOTI: 'NOTI',
@@ -27,7 +27,7 @@ export const CONFIG_ENV = {
 //FF CONFIGURACION DE BOT
 export const BOT = {
   //BOT
-  BOT: process.env.BOT_NAME,
+  BOT: CONFIG_ENV.BOT_NAME,
   CONEXION: 'Conectado',
   ESTADO: true,
   VISTO: true,
