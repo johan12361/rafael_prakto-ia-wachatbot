@@ -166,7 +166,7 @@ export async function ActualizarBot() {
     //OTROS
     BOT.NUM_TEL = bot.NUM_TEL
 
-    console.table(BOT)
+    //console.table(BOT)
     return console.log('✅ INFORMACION DE BOT CARGADA 🤖')
   }
   return console.error('❌ NO SE LOGRO CARGAR INFORMACION DE REFERENCIA')
