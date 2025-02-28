@@ -50,6 +50,11 @@ Para permitir al bot mantener la sesión de WhatsApp sin desconectarse en caso d
 /app/bot_sessions
 ```
 
+## Puerto de conexion
+```
+3001
+```
+
 # Créditos
 Desarrollado por: Johan S.
 Contacto: johan12361@gmaill.com
